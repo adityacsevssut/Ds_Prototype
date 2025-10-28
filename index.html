@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Disaster Resource Allocation</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Disaster Resource Allocation System</h1>
+      </div>
+    </header>
+
+    <div class="container">
+      <main class="main-grid">
+        <aside class="form-column">
+          <section class="card">
+            <h2>1. Add Resources</h2>
+            <form id="add-resource-form" class="form-layout">
+              <div>
+                <label for="resource-type">Resource Type</label>
+                <select id="resource-type">
+                  <option value="food">Food</option>
+                  <option value="water">Water</option>
+                  <option value="medicine">Medicine</option>
+                </select>
+              </div>
+              <div>
+                <label for="resource-quantity">Quantity</label>
+                <input
+                  type="number"
+                  id="resource-quantity"
+                  value="100"
+                  min="1"
+                />
+              </div>
+              <button type="submit" class="btn btn-blue">
+                Add to Inventory
+              </button>
+            </form>
+          </section>
+
+          <section class="card">
+            <h2>2. Submit Request</h2>
+            <form id="submit-request-form" class="form-layout">
+              <input
+                type="text"
+                id="req-area"
+                placeholder="Area Name"
+                required
+              />
+              <select id="req-disaster">
+                <option>Flood</option>
+                <option>Earthquake</option>
+                <option>Cyclone</option>
+                <option>Wildfire</option>
+              </select>
+              <select id="req-urgency">
+                <option value="Low">Low Urgency</option>
+                <option value="Medium" selected>Medium Urgency</option>
+                <option value="High">High Urgency</option>
+              </select>
+              <div class="input-grid">
+                <input type="number" id="req-food" placeholder="Food" min="0" />
+                <input
+                  type="number"
+                  id="req-water"
+                  placeholder="Water"
+                  min="0"
+                />
+                <input
+                  type="number"
+                  id="req-medicine"
+                  placeholder="Medicine"
+                  min="0"
+                />
+              </div>
+              <button type="submit" class="btn btn-green">
+                Submit Request
+              </button>
+            </form>
+          </section>
+        </aside>
+
+        <section class="dashboard-column">
+          <div class="card">
+            <h2>Available Resources (Inventory)</h2>
+            <div class="resource-grid">
+              <div class="resource-item" id="food-box">
+                <span class="resource-label">Food</span>
+                <span class="resource-count" id="food-count">0</span>
+              </div>
+              <div class="resource-item" id="water-box">
+                <span class="resource-label">Water</span>
+                <span class="resource-count" id="water-count">0</span>
+              </div>
+              <div class="resource-item" id="medicine-box">
+                <span class="resource-label">Medicine</span>
+                <span class="resource-count" id="medicine-count">0</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="list-header">
+              <h2>Pending Requests (Queue)</h2>
+              <button id="allocate-btn" class="btn btn-blue">
+                Allocate Next Request
+              </button>
+            </div>
+            <div id="request-list" class="list-container">
+              </div>
+          </div>
+
+          <div class="card">
+            <div class="list-header">
+              <h2>Allocation History (Stack)</h2>
+              <button id="undo-btn" class="btn btn-red">
+                Undo Last Allocation
+              </button>
+            </div>
+            <div id="history-list" class="list-container">
+              </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container">
+        <p>
+          Disaster Resource Allocation System © 2025. A Vanilla JS Demonstration.
+        </p>
+      </div>
+    </footer>
+
+    <div id="notification-area"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
